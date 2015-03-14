@@ -1,5 +1,6 @@
 package br.com.caelum.argentum.modelo;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public final class Candlestick {
@@ -49,5 +50,20 @@ public final class Candlestick {
 
 	public boolean isBaixa(){
 		return this.abertura > this.fechamento;
+	}
+
+	@Override
+	public String toString() {
+		String saida = "[abertura="+this.abertura;
+		saida += ", fechamento="+this.fechamento;
+		saida += ", maximo="+this.maximo;
+		saida += ", minimo="+this.minimo;
+		saida += ", volume="+this.volume;
+
+		SimpleDateFormat formatadorData = new SimpleDateFormat("dd/MM/yyyy");
+		String dataFormatada = formatadorData.format(data.getTime());
+
+		saida += ", data="+dataFormatada+"]";
+		return saida;
 	}
 }
